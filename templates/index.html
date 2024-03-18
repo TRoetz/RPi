@@ -59,7 +59,8 @@
   <h3>Lights Control</h1>
   <button type="button" class="toggle-button" id="toggle-all" onclick="toggleAllRelays()">Toggle All</button>
   <br/>
-  
+  <br/>
+  <hr/>
   {% for data in relay_data %}
     <button type="button" class="toggle-button" data-relay-id="{{ loop.index }}" onclick="toggleRelay(this)">
       {{ data["name"] }}
