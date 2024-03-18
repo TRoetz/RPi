@@ -14,7 +14,7 @@ relay_data = [
 ]
 
 # Define GPIO pin numbers (replace with your actual pins)
-RELAY_PINS = [17, 27, 22, 23, 18, 24, 25, 20]
+RELAY_PINS = [2, 3, 4, 17, 27, 22, 10, 9]
 
 # Define initial relay states (all off)
 relay_states = [data["state"] for data in relay_data]
