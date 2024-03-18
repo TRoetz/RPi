@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relay Control</title>
+  <title>Lights Control</title>
   <style>
     .toggle-button {
       /* Add some basic styling for the toggle buttons (optional) */
       display: inline-block;
-      width: 60px;
+      width: 150px;
       height: 30px;
       border-radius: 15px;
       background-color: #ccc;
@@ -44,6 +44,7 @@
     <button type="button" class="toggle-button" data-relay-id="{{ loop.index }}" onclick="toggleRelay(this)">
       {{ data["name"] }}
     </button>
+    <br/>
   {% endfor %}
   <script>
     function toggleAllRelays() {
