@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-  return render_template("index.html", relay_states=relay_states)
+  return render_template("index.html", relay_data=relay_data)
 
 @app.route("/toggle_all", methods=["POST"])
 def toggle_all():
