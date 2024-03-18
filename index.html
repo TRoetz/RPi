@@ -1,20 +1,89 @@
+Absolutely! Here's the modified index.html template using HTML5 toggle buttons instead of MUI components:
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Relay Control</title>
-  <link rel="stylesheet" href="https://unpkg.com/@mui/material@latest/dist/material.min.css">
+  <style>
+    .toggle-button {
+      /* Add some basic styling for the toggle buttons (optional) */
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+      border-radius: 15px;
+      background-color: #ccc;
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .toggle-button::after {
+      content: "";
+      display: block;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: white;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: left 0.2s ease-in-out;
+    }
+
+    .toggle-button.active::after {
+      left: calc(100% - 2px);
+      background-color: #4CAF50;  /* Change active color here */
+    }
+  </style>
 </head>
 <body>
   <h1>Relay Control</h1>
-  <button variant="contained" onClick={() => fetch("/toggle_all", {method: "POST"})}>Toggle All</button>
+  <button type="button" class="toggle-button" id="toggle-all" onclick="toggleAllRelays()">Toggle All</button>
   <br/>
   {% for data in relay_data %}
-    <ToggleButton key={data["name"]} value="relay{{ loop.index }}" variant="contained" selected={data["state"]}>
+    <button type="button" class="toggle-button" data-relay-id="{{ loop.index }}" onclick="toggleRelay(this)">
       {{ data["name"] }}
-    </ToggleButton>
+    </button>
   {% endfor %}
-  <script src="https://unpkg.com/@mui/material@latest/dist/material.min.js"></script>
+  <script>
+    function toggleAllRelays() {
+      // Send a POST request to "/toggle_all" with appropriate data
+      fetch("/toggle_all", {
+        method: "POST",
+        // Add logic to send data about toggling all relays
+      })
+      .then(response => response.text())
+      .then(data => {
+        // Handle success or error response from the server
+        console.log(data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+
+    function toggleRelay(button) {
+      const relayId = button.dataset.relayId;
+      // Send a POST request to "/toggle/<relay_id>" with appropriate data
+      fetch(`/toggle/${relayId}`, {
+        method: "POST",
+        // Add logic to send data about toggling the specific relay
+      })
+      .then(response => response.text())
+      .then(data => {
+        // Handle success or error response from the server
+        console.log(data);
+        if (data === "OK") {
+          button.classList.toggle("active");
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+  </script>
 </body>
 </html>
