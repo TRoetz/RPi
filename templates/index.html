@@ -52,15 +52,17 @@
       background-color: #f2f2f2;
       height: 100%;
       width: 100%;
+      align-content: center;
     }    
   </style>
 </head>
 <body>
   <h3>Lights Control</h1>
+  <hr/>
   <button type="button" class="toggle-button" id="toggle-all" onclick="toggleAllRelays()">Toggle All</button>
   <br/>
-  <br/>
   <hr/>
+  <br/>
   {% for data in relay_data %}
     <button type="button" class="toggle-button" data-relay-id="{{ loop.index }}" onclick="toggleRelay(this)">
       {{ data["name"] }}
