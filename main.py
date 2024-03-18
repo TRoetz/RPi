@@ -14,7 +14,7 @@ relay_data = [
 ]
 
 # Define GPIO pin numbers (replace with your actual pins)
-RELAY_PINS = [2, 3, 4, 11, 27, 22, 10, 9]
+RELAY_PINS = [2, 3, 4, 27, 22, 10, 9, 11]
 
 # Define initial relay states (all off)
 relay_states = [data["state"] for data in relay_data]
@@ -40,8 +40,8 @@ def toggle_all():
 @app.route("/toggle/<int:relay_id>", methods=["POST"])
 def toggle_relay(relay_id):
   global relay_states
-  if 0 <= relay_id < 8:
-    relay_states[relay_id] = not relay_states[relay_id]
+  if 0 <= relay_id < 9:
+    relay_states[relay_id-1] = not relay_states[relay_id-1]
     set_relays(relay_states)
     return "OK"
   else:
