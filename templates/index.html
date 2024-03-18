@@ -8,7 +8,7 @@
     .toggle-button {
       /* Add some basic styling for the toggle buttons (optional) */
       display: inline-block;
-      width: 150px;
+      width: 250px;
       height: 30px;
       border-radius: 15px;
       background-color: #ccc;
@@ -24,7 +24,7 @@
       height: 25px;
       border-radius: 50%;
       background-color: white;
-      opacity: 50%;
+      opacity: 15%;
       position: absolute;
       top: 2px;
       left: 2px;
@@ -32,14 +32,14 @@
     }
 
     .toggle-button.active::after {
-      left: calc(100% - 60px);
-      opacity: 50%;
+      left: calc(100% - 25px);
+      opacity: 15%;
       background-color: #4CAF50;  /* Change active color here */
     }
   </style>
 </head>
 <body>
-  <h1>Relay Control</h1>
+  <h1>Lights Control</h1>
   <button type="button" class="toggle-button" id="toggle-all" onclick="toggleAllRelays()">Toggle All</button>
   <br/>
   {% for data in relay_data %}
