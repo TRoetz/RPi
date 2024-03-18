@@ -49,33 +49,39 @@
     }
 
     body {
-      background-color: #f2f2f2;
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
-      vertical-align: middle;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }    
+    #channelLabels {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 400px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
   </style>
 </head>
 <body>
   <h3>Lights Control</h1>
   <hr/>
-  <button type="button" class="toggle-button" id="toggle-all" onclick="toggleAllRelays()">Toggle All</button>
-  <br/>
-  <hr/>
-  <br/>
-  {% for data in relay_data %}
-    <button type="button" class="toggle-button" data-relay-id="{{ loop.index }}" onclick="toggleRelay(this)">
-      {{ data["name"] }}
-    </button>
+  <div id="channelLabels">
+    <button type="button" class="toggle-button" id="toggle-all" onclick="toggleAllRelays()">Toggle All</button>
     <br/>
+    <hr/>
     <br/>
-  {% endfor %}
-
-
+    {% for data in relay_data %}
+      <button type="button" class="toggle-button" data-relay-id="{{ loop.index }}" onclick="toggleRelay(this)">
+        {{ data["name"] }}
+      </button>
+      <br/>
+      <br/>
+    {% endfor %}
+  </div>
   <script>
     function toggleAllRelays() {
       // Send a POST request to "/toggle_all" with appropriate data
