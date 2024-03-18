@@ -14,7 +14,7 @@
       background-color: #ccc;
       cursor: pointer;
       position: relative;
-      transition: background-color 0.2s ease-in-out;
+      transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
     }
 
     .toggle-button::after {
@@ -24,22 +24,22 @@
       height: 25px;
       border-radius: 50%;
       background-color: white;
-      opacity: 15%;
+      opacity: 90%;
       position: absolute;
       top: 2px;
       left: 2px;
-      transition: left 0.2s ease-in-out;
+      transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
     }
 
     .toggle-button.active::after {
       left: calc(100% - 25px);
-      opacity: 15%;
+      opacity: 90%;
       background-color: #4CAF50;  /* Change active color here */
     }
   </style>
 </head>
 <body>
-  <h1>Lights Control</h1>
+  <h3>Lights Control</h1>
   <button type="button" class="toggle-button" id="toggle-all" onclick="toggleAllRelays()">Toggle All</button>
   <br/>
   {% for data in relay_data %}
