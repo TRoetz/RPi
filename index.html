@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relay Control</title>
+  <link rel="stylesheet" href="https://unpkg.com/@mui/material@latest/dist/material.min.css">
+</head>
+<body>
+  <h1>Relay Control</h1>
+  <button variant="contained" onClick={() => fetch("/toggle_all", {method: "POST"})}>Toggle All</button>
+  <br/>
+  {% for data in relay_data %}
+    <ToggleButton key={data["name"]} value="relay{{ loop.index }}" variant="contained" selected={data["state"]}>
+      {{ data["name"] }}
+    </ToggleButton>
+  {% endfor %}
+  <script src="https://unpkg.com/@mui/material@latest/dist/material.min.js"></script>
+</body>
+</html>
